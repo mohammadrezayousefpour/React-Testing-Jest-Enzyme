@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Congrats.module.css";
+import PropTypes from "prop-types";
 
 const Congrats = (props) => {
   if (props.success) {
@@ -13,6 +14,10 @@ const Congrats = (props) => {
   } else {
     return <div className={classes.Congrats}></div>;
   }
+};
+
+Congrats.propTypes = {
+  success: PropTypes.bool.isRequired,
 };
 
 export default Congrats;

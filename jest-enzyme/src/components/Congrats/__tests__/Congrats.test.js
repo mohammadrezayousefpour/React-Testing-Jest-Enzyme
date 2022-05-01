@@ -4,12 +4,14 @@ import { shallow } from "enzyme";
 import classes from "../Congrats.module.css";
 import { findAttr, checkProps } from "../../../test/TestUtils";
 
+const defaultProps = { success: false };
 const setup = (props = {}) => {
-  return shallow(<Congrats {...props} />);
+  const setupProps = { ...defaultProps, ...props };
+  return shallow(<Congrats {...setupProps} />);
 };
 
 test("render without crashing", () => {
-  const wrapper = setup();
+  const wrapper = setup({ success: false });
   const comp = findAttr(wrapper, `${classes.Congrats}`);
   expect(comp.length).toBe(1);
 });
