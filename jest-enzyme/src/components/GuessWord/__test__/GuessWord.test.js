@@ -30,3 +30,5 @@ describe("if there are no guessed words", () => {
     expect(content.text().length).not.toBe(0);
   });
 });
+
+describe("if there are some guessed words", () => {});
