@@ -4,11 +4,8 @@ import { createStore, applyMiddleware } from "redux";
 import { middlewares } from "../configureStore";
 
 export const StoreFactory = (initialState) => {
-  return createStore(
-    rootReducer,
-    applyMiddleware(...middlewares),
-    initialState
-  );
+  const Store = applyMiddleware(...middlewares)(createStore);
+  return Store(rootReducer, initialState);
 };
 
 export const findAttr = (wrapper, value) => {
