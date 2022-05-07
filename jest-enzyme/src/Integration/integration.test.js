@@ -23,7 +23,7 @@ describe("guessWord action dispatcher ", () => {
           },
         ],
       };
-      expect(newState).toEqual(expectedState);
+      expect(newState).toStrictEqual(expectedState);
     });
     test("update state correctly for successful guess", () => {});
   });
