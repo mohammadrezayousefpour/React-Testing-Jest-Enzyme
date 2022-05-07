@@ -9,7 +9,9 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<GuessedWord {...setupProps} />);
+  const wrapper = shallow(<GuessedWord {...setupProps} />);
+  // console.log(wrapper.debug());
+  return wrapper;
 };
 
 test("does not throw warning with expected props", () => {

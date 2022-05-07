@@ -1,4 +1,10 @@
 import PropTypes from "prop-types";
+import rootReducer from "../Reducers/index";
+import { createStore } from "redux";
+
+export const StoreFactory = (initialState) => {
+  return createStore(rootReducer, initialState);
+};
 
 export const findAttr = (wrapper, value) => {
   return wrapper.find(`[className="${value}"]`);
