@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import GuessedWord from "./components/GuessWord/GuessedWord";
 import Congrats from "./components/Congrats/Congrats";
+import Input from "./components/Input/Input";
+
 class App extends Component {
   render() {
     return (
       <div className="container">
         <h1>Jotto</h1>
         <Congrats success={true} />
+        <Input />
         <GuessedWord
           guessedWords={[
             {

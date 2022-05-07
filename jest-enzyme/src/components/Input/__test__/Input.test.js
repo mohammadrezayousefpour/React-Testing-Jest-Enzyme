@@ -10,19 +10,46 @@ const setup = (initialState = {}) => {
   const wrapper = shallow(<Input store={Store} />)
     .dive()
     .dive();
-  console.log(wrapper.debug());
   return wrapper;
 };
-setup();
+
 describe("Input Component is render or not", () => {
   describe("word has not been guessed", () => {
-    test("render without error", () => {});
-    test("render input box", () => {});
-    test("render submit button", () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
+    test("render without error", () => {
+      const component = findAttr(wrapper, "InputContainer");
+      expect(component.length).toBe(1);
+    });
+    test("render input box", () => {
+      const inputBox = findAttr(wrapper, "inputBox");
+      expect(inputBox.length).toBe(1);
+    });
+    test("render submit button", () => {
+      const submitButton = findAttr(wrapper, "submitButton");
+      expect(submitButton.length).toBe(1);
+    });
   });
   describe("word has been guessed", () => {
-    test("render without error", () => {});
-    test("does not render input box", () => {});
-    test("does not render subnit button", () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: true };
+      wrapper = setup(initialState);
+    });
+    test("render without error", () => {
+      const component = findAttr(wrapper, "InputContainer");
+      expect(component.length).toBe(1);
+    });
+    test("does not render input box", () => {
+      const inputBox = findAttr(wrapper, "inputBox");
+      expect(inputBox.length).toBe(0);
+    });
+    test("does not render subnit button", () => {
+      const submitButton = findAttr(wrapper, "submitButton");
+      expect(submitButton.length).toBe(0);
+    });
   });
 });
