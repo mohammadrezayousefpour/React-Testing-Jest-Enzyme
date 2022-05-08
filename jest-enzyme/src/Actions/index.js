@@ -1,7 +1,9 @@
 import { getLetterMatch } from "../helpers";
+import axios from "axios";
 export const actionTypes = {
   CORRECT_GUESS: "CORRECT_GUESS",
   GUESS_WORD: "GUESS_WORD",
+  SET_SECRET_WORD: "SET_SECRET_WORD",
 };
 
 export const guessWord = (guessedWord) => {
@@ -22,5 +24,11 @@ export const guessWord = (guessedWord) => {
         type: actionTypes.CORRECT_GUESS,
       });
     }
+  };
+};
+
+export const getSecretWord = () => {
+  return function (dispach) {
+    axios.get("https://random-word-form.herokuapp.com/random/noun");
   };
 };
