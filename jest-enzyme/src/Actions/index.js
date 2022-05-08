@@ -28,7 +28,12 @@ export const guessWord = (guessedWord) => {
 };
 
 export const getSecretWord = () => {
-  return function (dispach) {
-    axios.get("https://random-word-form.herokuapp.com/random/noun");
+  return async function (dispach) {
+    return axios.get("http://localhost:3030").then((response) => {
+      dispach({
+        type: actionTypes.SET_SECRET_WORD,
+        payload: response.data,
+      });
+    });
   };
 };
