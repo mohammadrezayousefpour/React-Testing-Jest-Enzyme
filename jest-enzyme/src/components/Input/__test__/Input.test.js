@@ -53,3 +53,17 @@ describe("Input Component is render or not", () => {
     });
   });
 });
+
+describe("redux props", () => {
+  test("has access to success props", () => {
+    const success = true;
+    const wrapper = setup({ success });
+    const successProps = wrapper.instance().props.success;
+    expect(successProps).toBe(success);
+  });
+  test("has access to guessWord action creator as a function props", () => {
+    const wrapper = setup();
+    const guessWordProps = wrapper.instance().props.guessWord;
+    expect(guessWordProps).toBeInstanceOf(Function);
+  });
+});
