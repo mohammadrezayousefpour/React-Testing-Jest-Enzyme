@@ -3,32 +3,25 @@ import GuessedWord from "./components/GuessWord/GuessedWord";
 import Congrats from "./components/Congrats/Congrats";
 import Input from "./components/Input/Input";
 
-class App extends Component {
+import { connect } from "react-redux";
+import { getSecretWord } from "./Actions";
+export class UnconnectedApp extends Component {
+  componentDidMount() {
+    this.props.getSecretWord();
+  }
   render() {
     return (
       <div className="container">
         <h1>Jotto</h1>
-        <Congrats success={true} />
+        <Congrats success={this.props.success} />
         <Input />
-        <GuessedWord
-          guessedWords={[
-            {
-              guessedWord: "train",
-              letterMatched: 3,
-            },
-            {
-              guessedWord: "agile",
-              letterMatched: 1,
-            },
-            {
-              guessedWord: "party",
-              letterMatched: 5,
-            },
-          ]}
-        />
+        <GuessedWord guessedWords={this.props.guessedWords} />
       </div>
     );
   }
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  const { success, guessedWords, secretWord } = state;
+  return { success, guessedWords, secretWord };
+};
+export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
