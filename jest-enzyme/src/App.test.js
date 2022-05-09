@@ -18,4 +18,22 @@ describe("redux property", () => {
     const successProps = wrapper.instance().props.success;
     expect(successProps).toBe(success);
   });
+
+  test("has access to guessedwords props", () => {
+    const guessedWords = [{ guessedWord: "mohammadreza", letterMatched: 3 }];
+    const wrapper = setup({ guessedWords });
+    const guessedWordsprops = wrapper.instance().props.guessedWords;
+    expect(guessedWords).toEqual(guessedWords);
+  });
+  test("has access to secret word props", () => {
+    const secretWord = "enzymeTest";
+    const wrapper = setup({ secretWord });
+    const secretWordProps = wrapper.instance().props.secretWord;
+    expect(secretWordProps).toBe(secretWord);
+  });
+  test("has access to getSecretWord", () => {
+    const wrapper = setup();
+    const getSecretWordAction = wrapper.instance().props.getSecretWord;
+    expect(getSecretWordAction).toBeInstanceOf(Function);
+  });
 });
