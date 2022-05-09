@@ -10,7 +10,6 @@ const defaultProps = {
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
   const wrapper = shallow(<GuessedWord {...setupProps} />);
-  // console.log(wrapper.debug());
   return wrapper;
 };
 
